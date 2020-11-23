@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\RouteController;
 
 /*
 |--------------------------------------------------------------------------
@@ -13,9 +14,17 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', [RouteController::class, 'index']);
+
+Route::get('/articulos', [RouteController::class, 'articulos']);
+
+Route::get('/videos', [RouteController::class, 'videos']);
+
+Route::get('/podcast', [RouteController::class, 'podcast']);
+
+Route::get('/infografias', [RouteController::class, 'infografias']);
+
+Route::get('/nosotros', [RouteController::class, 'nosotros']);
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
     return view('dashboard');

@@ -1,0 +1,34 @@
+html,
+body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    background-color: #27b8cf;
+}
+.custom-navbar {
+    background-color: #1e8b9c;
+    color: white;
+    font-weight: bold;
+}
+.custom-link {
+    color: white;
+    font-size: large;
+}
+.custom-link:hover {
+    color: #69c8d7;
+}
+.custom-body {
+    height: 92%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    /* border: 1px solid red; */
+}
+
+.logo-home {
+    max-width: 85%;
+    margin: auto;
+
+    /* border: 1px solid red; */
+}
