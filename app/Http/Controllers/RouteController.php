@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Articulo;
 use Illuminate\Http\Request;
 
 class RouteController extends Controller
@@ -10,10 +11,7 @@ class RouteController extends Controller
     {
         return view('home');
     }
-    public function articulos()
-    {
-        return view('articulos');
-    }
+    
     public function podcast()
     {
         return view('podcast');

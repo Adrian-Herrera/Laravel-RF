@@ -1,18 +1,13 @@
 @extends('layouts.plantilla')
 
+@extends('layouts.navbar')
+
 @section('content')
 
-
-<div class="container-fluid custom-body my-auto">
-    
-        @extends('layouts.navbar')
-
-        <div class="row my-auto">
+<div class="container-fluid home">
+        <div class="my-auto" style="display: flex; align-items: center; justify-content: center;">
                 <img src="images/LogoHomeBlanco.png" alt="Logo" class="logo-home">
         </div>
- 
-
-
 </div>
 
 @endsection

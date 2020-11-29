@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ArticuloController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\RouteController;
 
@@ -16,15 +17,27 @@ use App\Http\Controllers\RouteController;
 
 Route::get('/', [RouteController::class, 'index']);
 
-Route::get('/articulos', [RouteController::class, 'articulos']);
+Route::get('/articulos', [ArticuloController::class, 'index'])->name('articulos.index');
 
-Route::get('/videos', [RouteController::class, 'videos']);
+Route::get('/articulos/{articulo}', [ArticuloController::class, 'show'])->name('articulos.show');
 
-Route::get('/podcast', [RouteController::class, 'podcast']);
+Route::post('/articulos', [ArticuloController::class, 'store'])->name('articulos.store');
 
-Route::get('/infografias', [RouteController::class, 'infografias']);
+Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard/articulos', [ArticuloController::class, 'dashboard'])->name('articulos.dashboard');
 
-Route::get('/nosotros', [RouteController::class, 'nosotros']);
+Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard/articulos/new', [ArticuloController::class, 'new'])->name('articulos.new');
+
+Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard/articulos/{articulo}/edit', [ArticuloController::class, 'edit'])->name('articulos.edit');
+
+Route::middleware(['auth:sanctum', 'verified'])->put('/dashboard/articulos/{articulo}/update', [ArticuloController::class, 'update'])->name('articulos.update');
+
+Route::get('/videos', [RouteController::class, 'videos'])->name('videos.index');
+
+Route::get('/podcast', [RouteController::class, 'podcast'])->name('podcast.index');
+
+Route::get('/infografias', [RouteController::class, 'infografias'])->name('infografias.index');
+
+Route::get('/nosotros', [RouteController::class, 'nosotros'])->name('nosotros.index');
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
     return view('dashboard');

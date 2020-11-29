@@ -8,8 +8,6 @@
         @extends('layouts.navbar')
 
         <h1>Nosotros</h1>
- 
-
 
 </div>
 
