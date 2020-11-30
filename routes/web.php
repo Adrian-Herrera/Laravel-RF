@@ -29,7 +29,9 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard/articulos/new',
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard/articulos/{articulo}/edit', [ArticuloController::class, 'edit'])->name('articulos.edit');
 
-Route::middleware(['auth:sanctum', 'verified'])->put('/dashboard/articulos/{articulo}/update', [ArticuloController::class, 'update'])->name('articulos.update');
+Route::middleware(['auth:sanctum', 'verified'])->put('/dashboard/articulos/{articulo}', [ArticuloController::class, 'update'])->name('articulos.update');
+
+Route::middleware(['auth:sanctum', 'verified'])->delete('/dashboard/articulos/{articulo}', [ArticuloController::class, 'delete'])->name('articulos.delete');
 
 Route::get('/videos', [RouteController::class, 'videos'])->name('videos.index');
 

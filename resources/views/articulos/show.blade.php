@@ -13,7 +13,7 @@
 
                     <img src="{{$articulo->imgURL}}" alt="" class="blog-image rounded m-2">
 
-                    <h1 class="m-2">{{$articulo->name}}</h1>
+                    <h1 class="m-2">{{$articulo->title}}</h1>
 
                     <div class="d-flex flex-row justify-content-between m-2">
                         <p class="article-info my-2">Escrito el: 24/11/2020</p>

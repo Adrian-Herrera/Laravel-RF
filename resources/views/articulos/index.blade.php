@@ -18,13 +18,13 @@
                 <div class="col-4 p-3">
 
                         <h1>
-                                Title {{$item->name}}
+                                {{$item->title}}
                         </h1>
                 </div>
                 <div class="col-5 p-3">
 
                         <p>
-                                description {{$item->description}}
+                                {{$item->description}}
                         </p>
 
                         

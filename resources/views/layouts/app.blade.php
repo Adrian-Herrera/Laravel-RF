@@ -17,14 +17,9 @@
 
     @livewireStyles
 
-
-
     <!-- Scripts -->
     <script src="{{ mix('js/app.js') }}" defer></script>
 
-    <style>
-
-    </style>
 </head>
 
 <body class="font-sans antialiased">

@@ -22,7 +22,7 @@ class ArticuloFactory extends Factory
     public function definition()
     {
         return [
-            'name' => $this->faker->sentence(),
+            'title' => $this->faker->sentence(),
             'description' => $this->faker->paragraph($nbSentences = 3, $variableNbSentences = true),
             'text' => $this->faker->paragraph($nbSentences = 200),
             'active' => $this->faker->boolean($chanceOfGettingTrue = 50),

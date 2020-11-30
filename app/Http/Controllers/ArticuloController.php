@@ -10,7 +10,7 @@ class ArticuloController extends Controller
     public function index()
     {
 
-        $articulos = Articulo::orderBy('id', 'desc')->paginate(7);
+        $articulos = Articulo::orderBy('id', 'desc')->paginate(10);
 
         return view('articulos.index', compact('articulos'));
     }
@@ -32,6 +32,19 @@ class ArticuloController extends Controller
         return view('articulos.new');
     }
 
+    public function store(Request $request)
+    {
+        $request->validate([
+            'title' => 'required|max:250',
+            'description' => 'required',
+            'imgURL' => 'required'
+        ]);
+
+        Articulo::create($request->all());
+        
+        return redirect()->route('articulos.dashboard');
+    }
+
     public function edit(Articulo $articulo)
     {
         return view('articulos.edit', compact('articulo'));
@@ -39,28 +52,15 @@ class ArticuloController extends Controller
 
     public function update(Request $request, Articulo $articulo)
     {
-        $articulo->name = $request->name;
-        $articulo->description = $request->description;
-        $articulo->active = $request->active;
-        $articulo->text = $request->content;
-        $articulo->imgURL = $request->imgURL;
 
-        $articulo->save();
+        $articulo->update($request->all());
+
+        return redirect()->route('articulos.dashboard');
+    }
+    public function delete(Articulo $articulo){
+        $articulo->delete();
 
         return redirect()->route('articulos.dashboard');
     }
 
-    public function store(Request $request)
-    {
-        $articulo = new Articulo();
-
-        $articulo->name = $request->name;
-        $articulo->description = $request->description;
-        $articulo->active = $request->active;
-        $articulo->text = $request->content;
-        $articulo->imgURL = $request->imgURL;
-
-        $articulo->save();
-        return redirect()->route('articulos.dashboard');
-    }
 }
