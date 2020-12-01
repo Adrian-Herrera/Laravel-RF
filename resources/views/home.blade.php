@@ -1,7 +1,5 @@
 @extends('layouts.plantilla')
 
-@extends('layouts.navbar')
-
 @section('content')
 
 <div class="container-fluid home">

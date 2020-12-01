@@ -12,20 +12,4 @@ class RouteController extends Controller
         return view('home');
     }
     
-    public function podcast()
-    {
-        return view('podcast');
-    }
-    public function videos()
-    {
-        return view('videos');
-    }
-    public function infografias()
-    {
-        return view('infografias');
-    }
-    public function nosotros()
-    {
-        return view('nosotros');
-    }
 }

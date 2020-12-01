@@ -23,8 +23,8 @@
                 <a class="nav-link custom-link " href="{{ route('podcast.index') }}">Podcast <span
                         class="sr-only">(current)</span></a>
             </li>
-            <li class="nav-item {{request()->routeIs('infografias.*') ? 'active' : ''}}">
-                <a class="nav-link custom-link " href="{{ route('infografias.index') }}">Infografias <span
+            <li class="nav-item {{request()->routeIs('images.*') ? 'active' : ''}}">
+                <a class="nav-link custom-link " href="{{ route('images.index') }}">Infografias <span
                         class="sr-only">(current)</span></a>
             </li>
             <li class="nav-item {{request()->routeIs('nosotros.*') ? 'active' : ''}}">
