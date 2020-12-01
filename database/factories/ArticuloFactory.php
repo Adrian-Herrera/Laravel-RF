@@ -4,7 +4,7 @@ namespace Database\Factories;
 
 use App\Models\Articulo;
 use Illuminate\Database\Eloquent\Factories\Factory;
-
+use Illuminate\Support\Str;
 class ArticuloFactory extends Factory
 {
     /**
@@ -21,8 +21,10 @@ class ArticuloFactory extends Factory
      */
     public function definition()
     {
+        $title = $this->faker->sentence();
         return [
-            'title' => $this->faker->sentence(),
+            'title' => $title,
+            'slug' => Str::slug($title,'-'),
             'description' => $this->faker->paragraph($nbSentences = 3, $variableNbSentences = true),
             'text' => $this->faker->paragraph($nbSentences = 200),
             'active' => $this->faker->boolean($chanceOfGettingTrue = 50),

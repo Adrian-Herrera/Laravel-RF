@@ -3,8 +3,6 @@
 @section('content')
 
 
-@extends('layouts.navbar')
-
 <div class="container article-title">
     <div class="row p-1 d-flex flex-row justify-content-between">
         <div class="col-8 p-3 ">

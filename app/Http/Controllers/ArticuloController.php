@@ -7,6 +7,11 @@ use Illuminate\Http\Request;
 
 class ArticuloController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth')->except('index', 'show');
+    }
+
     public function index()
     {
 
@@ -27,9 +32,9 @@ class ArticuloController extends Controller
         return view('articulos.dashboard', compact('articulos'));
     }
 
-    public function new()
+    public function create()
     {
-        return view('articulos.new');
+        return view('articulos.create');
     }
 
     public function store(Request $request)
@@ -41,7 +46,7 @@ class ArticuloController extends Controller
         ]);
 
         Articulo::create($request->all());
-        
+
         return redirect()->route('articulos.dashboard');
     }
 
@@ -57,10 +62,10 @@ class ArticuloController extends Controller
 
         return redirect()->route('articulos.dashboard');
     }
-    public function delete(Articulo $articulo){
+    public function destroy(Articulo $articulo)
+    {
         $articulo->delete();
 
         return redirect()->route('articulos.dashboard');
     }
-
 }

@@ -17,21 +17,23 @@ use App\Http\Controllers\RouteController;
 
 Route::get('/', [RouteController::class, 'index']);
 
-Route::get('/articulos', [ArticuloController::class, 'index'])->name('articulos.index');
+// Route::get('/articulos', [ArticuloController::class, 'index'])->name('articulos.index');
 
-Route::get('/articulos/{articulo}', [ArticuloController::class, 'show'])->name('articulos.show');
+// Route::get('/articulos/{articulo}', [ArticuloController::class, 'show'])->name('articulos.show');
 
-Route::post('/articulos', [ArticuloController::class, 'store'])->name('articulos.store');
+// Route::post('/articulos', [ArticuloController::class, 'store'])->name('articulos.store');
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard/articulos', [ArticuloController::class, 'dashboard'])->name('articulos.dashboard');
 
-Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard/articulos/new', [ArticuloController::class, 'new'])->name('articulos.new');
+// Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard/articulos/new', [ArticuloController::class, 'new'])->name('articulos.new');
 
-Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard/articulos/{articulo}/edit', [ArticuloController::class, 'edit'])->name('articulos.edit');
+// Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard/articulos/{articulo}/edit', [ArticuloController::class, 'edit'])->name('articulos.edit');
 
-Route::middleware(['auth:sanctum', 'verified'])->put('/dashboard/articulos/{articulo}', [ArticuloController::class, 'update'])->name('articulos.update');
+// Route::middleware(['auth:sanctum', 'verified'])->put('/dashboard/articulos/{articulo}', [ArticuloController::class, 'update'])->name('articulos.update');
 
-Route::middleware(['auth:sanctum', 'verified'])->delete('/dashboard/articulos/{articulo}', [ArticuloController::class, 'delete'])->name('articulos.delete');
+// Route::middleware(['auth:sanctum', 'verified'])->delete('/dashboard/articulos/{articulo}', [ArticuloController::class, 'delete'])->name('articulos.delete');
+
+Route::resource('articulos', ArticuloController::class);
 
 Route::get('/videos', [RouteController::class, 'videos'])->name('videos.index');
 

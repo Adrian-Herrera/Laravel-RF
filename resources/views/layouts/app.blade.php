@@ -91,12 +91,6 @@
                 console.error(error);
             });
 
-        // document.querySelector('#submit').addEventListener('click', () => {
-        //     const editorData = editor.getData();
-        //     console.log(editorData);
-
-        //     // ...
-        // });
     </script>
 </body>
 

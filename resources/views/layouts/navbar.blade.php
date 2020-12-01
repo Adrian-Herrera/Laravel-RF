@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-lg sticky-top custom-navbar">
+<nav class="navbar navbar-expand-lg sticky-top navbar-dark custom-navbar ">
     <a class="navbar-brand custom-link" href="{{ url('/') }}">Home</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02"
         aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
@@ -11,24 +11,24 @@
 
     <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
         <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
-            <li class="nav-item active">
+            <li class="nav-item {{request()->routeIs('articulos.*') ? 'active' : ''}}">
                 <a class="nav-link custom-link" href="{{ route('articulos.index') }}">Articulos <span
                         class="sr-only">(current)</span></a>
             </li>
-            <li class="nav-item  active">
-                <a class="nav-link custom-link" href="{{ route('videos.index') }}">Videos <span
+            <li class="nav-item {{request()->routeIs('videos.*') ? 'active' : ''}}">
+                <a class="nav-link custom-link " href="{{ route('videos.index') }}">Videos <span
                         class="sr-only">(current)</span></a>
             </li>
-            <li class="nav-item active">
-                <a class="nav-link custom-link" href="{{ route('podcast.index') }}">Podcast <span
+            <li class="nav-item {{request()->routeIs('podcast.*') ? 'active' : ''}}">
+                <a class="nav-link custom-link " href="{{ route('podcast.index') }}">Podcast <span
                         class="sr-only">(current)</span></a>
             </li>
-            <li class="nav-item active">
-                <a class="nav-link custom-link" href="{{ route('infografias.index') }}">Infografias <span
+            <li class="nav-item {{request()->routeIs('infografias.*') ? 'active' : ''}}">
+                <a class="nav-link custom-link " href="{{ route('infografias.index') }}">Infografias <span
                         class="sr-only">(current)</span></a>
             </li>
-            <li class="nav-item active">
-                <a class="nav-link custom-link" href="{{ route('nosotros.index') }}">Nosotros <span
+            <li class="nav-item {{request()->routeIs('nosotros.*') ? 'active' : ''}}">
+                <a class="nav-link custom-link " href="{{ route('nosotros.index') }}">Nosotros <span
                         class="sr-only">(current)</span></a>
             </li>
             {{-- <li class="nav-item">

@@ -6,7 +6,7 @@
                 Articulos
             </h2>
             <a class="px-5 py-2 border-green-500 border text-green-500 rounded transition duration-300 hover:bg-green-700 hover:text-white focus:outline-none"
-                href="{{ route('articulos.new') }}">new</a>
+                href="{{ route('articulos.create') }}">new</a>
         </div>
     </x-slot>
 
@@ -74,7 +74,7 @@
                                         class="px-6 py-4 whitespace-no-wrap border-b border-gray-500 text-sm  ">
                                         <a href="{{route('articulos.edit', $item)}}"
                                             class="px-3 py-2 border-yellow-500 border text-yellow-500 rounded transition duration-300 hover:bg-yellow-700 hover:text-white focus:outline-none inline-block">Editar</a>
-                                        <form action="{{route('articulos.delete', $item)}}" method="POST" class="inline-block">
+                                        <form action="{{route('articulos.destroy', $item)}}" method="POST" class="inline-block">
                                             @csrf
                                             @method('delete')
                                             <button

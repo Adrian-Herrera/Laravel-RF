@@ -2,8 +2,6 @@
 
 @section('content')
 
-
-@extends('layouts.navbar')
 <div class="custom-title">
         <h1>ARTICULOS</h1>
 </div>
@@ -28,7 +26,8 @@
                         </p>
 
                         
-                        <a href="{{ route('articulos.show', $item->id) }}" class="btn btn-primary">Ver mas</a>
+                        <a href="{{ route('articulos.show', $item) }}" class="btn btn-primary">Ver mas</a>
+        
                 </div>
         </div>
 

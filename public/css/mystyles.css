@@ -17,11 +17,11 @@ body {
     font-weight: bold;
 }
 .custom-link {
-    color: white;
+    /* color: white; */
     font-size: large;
 }
-.custom-link:hover {
-    color: #69c8d7;
+.navbar-default .navbar-nav>li>a:hover {
+    color: black;
 }
 .logo-home {
     max-width: 80%;
