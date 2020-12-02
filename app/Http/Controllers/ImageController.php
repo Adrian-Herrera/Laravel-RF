@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Image;
 use Illuminate\Http\Request;
-
+use Illuminate\Support\Facades\Storage;
 use Livewire\WithFileUploads;
 
 class ImageController extends Controller
@@ -17,7 +17,7 @@ class ImageController extends Controller
     
     public function index()
     {
-        $images = Image::all();
+        $images = Image::orderBy('id', 'desc')->paginate(10);
 
         return view('images.index', compact('images'));
     }
@@ -50,18 +50,25 @@ class ImageController extends Controller
     
     public function edit(Image $image)
     {
-        //
+        return view('images.edit', compact('image'));
     }
 
     
     public function update(Request $request, Image $image)
     {
-        //
+        $image->update($request->all());
+
+        return redirect()->route('images.dashboard');
     }
 
     
     public function destroy(Image $image)
     {
-        //
+        Storage::delete('public/'.$image->image_path);
+
+        $image->delete();
+
+        return redirect()->route('images.dashboard');
+
     }
 }

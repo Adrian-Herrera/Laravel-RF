@@ -21,10 +21,8 @@ class ArticuloFactory extends Factory
      */
     public function definition()
     {
-        $title = $this->faker->sentence();
         return [
-            'title' => $title,
-            'slug' => Str::slug($title,'-'),
+            'title' => $this->faker->sentence(),
             'description' => $this->faker->paragraph($nbSentences = 3, $variableNbSentences = true),
             'text' => $this->faker->paragraph($nbSentences = 200),
             'active' => $this->faker->boolean($chanceOfGettingTrue = 50),

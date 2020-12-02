@@ -5,8 +5,8 @@
 
 <div class="container article-title">
     <div class="row p-1 d-flex flex-row justify-content-between">
-        <div class="col-8 p-3 ">
-            <article>
+        <div class="col-8 p-3 border-right " style="border-color: grey">
+            <article class="ck-content">
                 <header class="d-flex flex-column justify-content-between ">
 
                     <img src="{{$articulo->imgURL}}" alt="" class="blog-image rounded m-2">
@@ -22,7 +22,7 @@
                         <p class="article-author m-2">Escrito por: Fulano</p>
                     </div>
                 </header>
-                <div class="p-2">
+                <div class="p-2 custom-content">
 
                     {!!$articulo->text!!}
                     

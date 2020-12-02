@@ -18,7 +18,7 @@ use App\Http\Controllers\RouteController;
 
 // Home Route
 
-Route::get('/', [RouteController::class, 'index']);
+Route::get('/', [RouteController::class, 'index'])->name('home');
 
 // Article routes
 

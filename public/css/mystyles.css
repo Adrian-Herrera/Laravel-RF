@@ -62,6 +62,9 @@ body {
 .custom-body img {
     width: 100%;
 }
+.custom-content img {
+    width: 100%;
+}
 
 .blog-image {
     width: auto;
@@ -84,7 +87,9 @@ body {
 }
 
 .infografia {
-    width: 20%;
-    height: auto;
-    margin: 10px;
+    width: 100%;
+    max-height: 360px;
+    border: 2px solid grey;
+    margin: 5px;
+    padding: 2px;
 }
