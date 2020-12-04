@@ -20,6 +20,13 @@
     <!-- Scripts -->
     <script src="{{ mix('js/app.js') }}" defer></script>
 
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.form/4.3.0/jquery.form.min.js"
+        integrity="sha384-qlmct0AOBiA2VPZkMY3+2WqkHtIQ9lSdAsAn5RUJD/3vA5MKDgSGcdmIv4ycVxyn" crossorigin="anonymous">
+    </script>
+
+
+
 </head>
 
 <body class="font-sans antialiased">
@@ -133,6 +140,41 @@
             });
 
     </script>
+    <script type="text/javascript">
+        var bar = $('#bar');
+    var percent = $('#percent');
+    $('#myForm').ajaxForm({
+        beforeSubmit: function() {
+        document.getElementById("progress_div").style.display="block";
+        var percentVal = '0%';
+        bar.width(percentVal)
+        percent.html(percentVal);
+        },
+
+        uploadProgress: function(event, position, total, percentComplete) {
+        var percentVal = percentComplete + '%';
+        console.log(percentVal);
+        bar.width(percentVal)
+        percent.thml(percentVal);
+        },
+        
+        success: function() {
+        var percentVal = '100%';
+        bar.width(percentVal)
+        percent.html(percentVal);
+        console.log("success");
+        },
+
+        complete: function(xhr) {
+            if(xhr.responseText)
+            {
+                // window.location.href = {{ route('videos.dashboard') }};
+            }
+            
+        // }
+    }); 
+    </script>
+
 </body>
 
 </html>

@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\ArticuloController;
 use App\Http\Controllers\ImageController;
+use App\Http\Controllers\VideoController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\RouteController;
 
@@ -34,9 +35,15 @@ Route::resource('infografias', ImageController::class)->parameters(['infografias
 
 // Video routes
 
-Route::get('/videos', [RouteController::class, 'videos'])->name('videos.index');
+Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard/videos', [VideoController::class, 'dashboard'])->name('videos.dashboard');
 
-Route::get('/podcast', [RouteController::class, 'podcast'])->name('podcast.index');
+Route::resource('videos', VideoController::class);
+
+// Podcast routes
+
+Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard/podcast', [PodcastController::class, 'dashboard'])->name('podcast.dashboard');
+
+Route::resource('podcast', PodcastController::class);
 
 
 Route::get('/nosotros', [RouteController::class, 'nosotros'])->name('nosotros.index');

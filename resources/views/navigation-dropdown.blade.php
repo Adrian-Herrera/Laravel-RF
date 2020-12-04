@@ -21,6 +21,9 @@
                     <x-jet-nav-link href="{{ route('images.dashboard') }}" :active="request()->routeIs('images.dashboard')">
                         Infografias
                     </x-jet-nav-link>
+                    <x-jet-nav-link href="{{ route('videos.dashboard') }}" :active="request()->routeIs('videos.dashboard')">
+                        Videos
+                    </x-jet-nav-link>
                 </div>
             </div>
 

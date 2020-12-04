@@ -12,6 +12,7 @@
 
         @endif
 
+
     </div>
 
     <div class="form-group">
@@ -19,8 +20,8 @@
         <label for="exampleInputName">Titulo:</label>
 
         <input type="text" class="form-control" id="exampleInputName" placeholder="Enter title" wire:model="name">
-
-        @error('title') <span class="text-danger">{{ $message }}</span> @enderror
+        <br>
+        @error('name') <span class="text-danger">{{ $message }}</span> @enderror
 
     </div>
 
@@ -29,8 +30,8 @@
         <label for="exampleInputName">File:</label>
 
         <input type="file" class="form-control" id="exampleInputName" wire:model="image_path">
-
-        @error('name') <span class="text-danger">{{ $message }}</span> @enderror
+        <br>
+        @error('image_path') <span class="text-danger">{{ $message }}</span> @enderror
 
     </div>
 
