@@ -26,7 +26,6 @@
     </script>
 
 
-
 </head>
 
 <body class="font-sans antialiased">
@@ -49,130 +48,38 @@
     @stack('modals')
 
     @livewireScripts
-    <script src="{{ URL::asset('js/ckeditor.js') }}"></script>
-    <script>
-        ClassicEditor
-            .create(document.querySelector('#editor'), {
-                toolbar: {
-					items: [
-						'heading',
-						'|',
-						'bold',
-						'italic',
-						'link',
-						'bulletedList',
-						'numberedList',
-						'alignment',
-						'|',
-						'indent',
-						'outdent',
-						'|',
-						'imageInsert',
-						'blockQuote',
-						'insertTable',
-						'mediaEmbed',
-						'undo',
-						'redo',
-						'|',
-						'fontBackgroundColor',
-						'fontColor',
-						'fontSize',
-						'fontFamily',
-						'highlight',
-						'horizontalLine',
-						'underline',
-						'|',
-						'MathType',
-						'ChemType'
-					]
-				},
-				language: 'es',
-				image: {
-					styles: [
-                            'alignLeft', 'alignCenter', 'alignRight'
-                        ],
-
-                        // Configure the available image resize options.
-                        resizeOptions: [
-                            {
-                                name: 'imageResize:original',
-                                label: 'Original',
-                                value: null
-                            },
-                            {
-                                name: 'imageResize:50',
-                                label: '50%',
-                                value: '50'
-                            },
-                            {
-                                name: 'imageResize:75',
-                                label: '75%',
-                                value: '75'
-                            }
-                        ],
-
-                        // You need to configure the image toolbar, too, so it shows the new style
-                        // buttons as well as the resize buttons.
-                        toolbar: [
-                            'imageStyle:alignLeft', 'imageStyle:alignCenter', 'imageStyle:alignRight',
-                            '|',
-                            'imageResize',
-                            '|',
-                            'imageTextAlternative'
-                        ]
-				},
-				table: {
-					contentToolbar: [
-						'tableColumn',
-						'tableRow',
-						'mergeTableCells',
-						'tableCellProperties',
-						'tableProperties'
-					]
-				},
-				licenseKey: '',
-            })
-            .then(newEditor => {
-                editor = newEditor;
-            })
-            .catch(error => {
-                console.error(error);
-            });
-
-    </script>
     <script type="text/javascript">
         var bar = $('#bar');
-    var percent = $('#percent');
-    $('#myForm').ajaxForm({
-        beforeSubmit: function() {
-        document.getElementById("progress_div").style.display="block";
-        var percentVal = '0%';
-        bar.width(percentVal)
-        percent.html(percentVal);
-        },
+        var percent = $('#percent');
+        $('#myForm').ajaxForm({
+            beforeSubmit: function() {
+            var percentVal = 0;
+            bar.val(percentVal);
+            percent.html(percentVal + '%');
+            },
 
-        uploadProgress: function(event, position, total, percentComplete) {
-        var percentVal = percentComplete + '%';
-        console.log(percentVal);
-        bar.width(percentVal)
-        percent.thml(percentVal);
-        },
-        
-        success: function() {
-        var percentVal = '100%';
-        bar.width(percentVal)
-        percent.html(percentVal);
-        console.log("success");
-        },
-
-        complete: function(xhr) {
-            if(xhr.responseText)
-            {
-                // window.location.href = {{ route('videos.dashboard') }};
-            }
+            uploadProgress: function(event, position, total, percentComplete) {
+            var percentVal = percentComplete + '%';
+            bar.val(percentComplete);
+            percent.html(percentVal);
+            },
             
-        // }
-    }); 
+            success: function() {
+            var percentVal = 100;
+            bar.val(percentVal);
+            percent.html(percentVal + '%');
+            // console.log("success");
+            },
+
+            complete: function(xhr) {
+                // console.log(xhr.responseText); 
+                if(xhr.responseText)
+                {
+                    window.location.href = xhr.responseText;
+                }
+                
+            }
+        }); 
     </script>
 
 </body>

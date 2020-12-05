@@ -42,13 +42,12 @@ class VideoController extends Controller
             'description' => 'required',
             'video_path' => 'required|file|mimes:mp4',
         ]);
-        // return redirect()->route('videos.dashboard');
 
         $validatedData['video_path'] = $request->video_path->store('Videos', 'public');
 
         Video::create($validatedData);
 
-        return redirect()->route('videos.dashboard');
+        return route('videos.dashboard');
     }
 
 
@@ -58,25 +57,26 @@ class VideoController extends Controller
     }
 
 
-    public function edit(Video $videos)
+    public function edit(Video $video)
     {
-        return view('videos.edit', compact('videos'));
+        return view('videos.edit', compact('video'));
     }
 
 
-    public function update(Request $request, Video $videos)
+    public function update(Request $request, Video $video)
     {
-        $videos->update($request->all());
+        $video->update($request->all());
 
         return redirect()->route('videos.dashboard');
     }
 
 
-    public function destroy(Video $videos)
+    public function destroy(Video $video)
     {
-        Storage::delete('public/' . $videos->video_path);
+        
+        Storage::delete('public/' . $video->video_path);
 
-        $videos->delete();
+        $video->delete();
 
         return redirect()->route('videos.dashboard');
     }

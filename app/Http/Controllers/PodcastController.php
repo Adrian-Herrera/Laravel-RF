@@ -4,82 +4,79 @@ namespace App\Http\Controllers;
 
 use App\Models\Podcast;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class PodcastController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+    public function __construct()
+    {
+        $this->middleware('auth')->except('index', 'show');
+    }
+
     public function index()
     {
-        //
+        $podcasts = Podcast::orderBy('id', 'desc')->paginate(10);
+
+        return view('podcasts.index', compact('podcasts'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+    public function dashboard()
+    {
+        $podcasts = Podcast::orderBy('id', 'desc')->paginate(10);
+
+        return view('podcasts.dashboard', compact('podcasts'));
+    }
+
+
     public function create()
     {
-        //
+        return view('podcasts.create');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
+
     public function store(Request $request)
     {
-        //
+        $validatedData = $request->validate([
+            'name' => 'required',
+            'description' => 'required',
+            'podcast_path' => 'required|file|mimes:mp3',
+        ]);
+
+        $validatedData['podcast_path'] = $request->podcast_path->store('Podcasts', 'public');
+
+        Podcast::create($validatedData);
+
+        return route('podcasts.dashboard');
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\Podcast  $podcast
-     * @return \Illuminate\Http\Response
-     */
+
     public function show(Podcast $podcast)
     {
         //
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\Podcast  $podcast
-     * @return \Illuminate\Http\Response
-     */
+
     public function edit(Podcast $podcast)
     {
-        //
+        return view('podcasts.edit', compact('podcast'));
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Podcast  $podcast
-     * @return \Illuminate\Http\Response
-     */
+
     public function update(Request $request, Podcast $podcast)
     {
-        //
+        $podcast->update($request->all());
+
+        return redirect()->route('podcasts.dashboard');
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\Podcast  $podcast
-     * @return \Illuminate\Http\Response
-     */
+
     public function destroy(Podcast $podcast)
     {
-        //
+        
+        Storage::delete('public/' . $podcast->podcast_path);
+
+        $podcast->delete();
+
+        return redirect()->route('podcasts.dashboard');
     }
 }

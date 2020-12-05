@@ -19,8 +19,8 @@
                 <a class="nav-link custom-link " href="{{ route('videos.index') }}">Videos <span
                         class="sr-only">(current)</span></a>
             </li>
-            <li class="nav-item {{request()->routeIs('podcast.*') ? 'active' : ''}}">
-                <a class="nav-link custom-link " href="{{ route('podcast.index') }}">Podcast <span
+            <li class="nav-item {{request()->routeIs('podcasts.*') ? 'active' : ''}}">
+                <a class="nav-link custom-link " href="{{ route('podcasts.index') }}">Podcast <span
                         class="sr-only">(current)</span></a>
             </li>
             <li class="nav-item {{request()->routeIs('images.*') ? 'active' : ''}}">

@@ -3,6 +3,7 @@
 use App\Http\Controllers\ArticuloController;
 use App\Http\Controllers\ImageController;
 use App\Http\Controllers\VideoController;
+use App\Http\Controllers\PodcastController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\RouteController;
 
@@ -41,9 +42,9 @@ Route::resource('videos', VideoController::class);
 
 // Podcast routes
 
-Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard/podcast', [PodcastController::class, 'dashboard'])->name('podcast.dashboard');
+Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard/podcasts', [PodcastController::class, 'dashboard'])->name('podcasts.dashboard');
 
-Route::resource('podcast', PodcastController::class);
+Route::resource('podcasts', PodcastController::class);
 
 
 Route::get('/nosotros', [RouteController::class, 'nosotros'])->name('nosotros.index');

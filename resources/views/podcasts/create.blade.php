@@ -1,7 +1,7 @@
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            Añadir Video
+            Añadir Podcasts
         </h2>
     </x-slot>
 
@@ -10,7 +10,7 @@
             <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg custom-editor">
 
 
-                <form action="{{ route('videos.store') }}" method="POST" enctype="multipart/form-data" id="myForm">
+                <form action="{{ route('podcasts.store') }}" method="POST" enctype="multipart/form-data" id="myForm">
                     @csrf
                     <div class="row">
                         <label>Nombre
@@ -36,7 +36,7 @@
                         <br>
                         @enderror
                         <div class="col-md-10">
-                            <input type="file" name="video_path" class="form-control" id="upload_file">
+                            <input type="file" name="podcast_path" class="form-control" id="upload_file">
                         </div>
                         @error('video_path')
                         <br>
@@ -47,7 +47,7 @@
 
 
                         <div class="col-md-2">
-                            <button type="submit" class="btn btn-success" id="submitButton">Upload</button>
+                            <button type="submit" class="btn btn-success" id="submitButton">Crear</button>
                         </div>
                     </div>
                 </form>

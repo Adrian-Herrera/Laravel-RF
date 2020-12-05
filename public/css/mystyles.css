@@ -67,7 +67,7 @@ body {
 }
 
 .blog-image {
-    width: auto;
+    width: 100%;
     height: auto;
     max-height: 350px;
 }

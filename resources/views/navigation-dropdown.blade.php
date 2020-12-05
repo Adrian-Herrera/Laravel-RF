@@ -15,14 +15,17 @@
                     <x-jet-nav-link href="{{ route('dashboard') }}" :active="request()->routeIs('dashboard')">
                         {{ __('Dashboard') }}
                     </x-jet-nav-link>
-                    <x-jet-nav-link href="{{ route('articulos.dashboard') }}" :active="request()->routeIs('articulos.dashboard')">
+                    <x-jet-nav-link href="{{ route('articulos.dashboard') }}" :active="request()->routeIs('articulos.*')">
                         Articulos
                     </x-jet-nav-link>
-                    <x-jet-nav-link href="{{ route('images.dashboard') }}" :active="request()->routeIs('images.dashboard')">
+                    <x-jet-nav-link href="{{ route('images.dashboard') }}" :active="request()->routeIs('images.*')">
                         Infografias
                     </x-jet-nav-link>
-                    <x-jet-nav-link href="{{ route('videos.dashboard') }}" :active="request()->routeIs('videos.dashboard')">
+                    <x-jet-nav-link href="{{ route('videos.dashboard') }}" :active="request()->routeIs('videos.*')">
                         Videos
+                    </x-jet-nav-link>
+                    <x-jet-nav-link href="{{ route('podcasts.dashboard') }}" :active="request()->routeIs('podcasts.*')">
+                        Podcast
                     </x-jet-nav-link>
                 </div>
             </div>
