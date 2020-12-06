@@ -16,7 +16,7 @@
                         <label>Nombre
 
                             <div class="col-md-10">
-                                <input type="text" name="name" class="form-control">
+                                <input type="text" name="name" class="form-control" required>
                             </div>
                         </label>
                         @error('name')
@@ -27,7 +27,7 @@
                         <label>Descripción
 
                             <div class="col-md-10">
-                                <input type="text" name="description" class="form-control">
+                                <input type="text" name="description" class="form-control" required>
                             </div>
                         </label>
                         @error('description')
@@ -36,7 +36,8 @@
                         <br>
                         @enderror
                         <div class="col-md-10">
-                            <input type="file" name="video_path" class="form-control" id="upload_file">
+                            <input type="file" accept=".mp4" name="video_path" class="form-control" id="upload_file"
+                                required>
                         </div>
                         @error('video_path')
                         <br>
@@ -44,17 +45,20 @@
                         <br>
                         @enderror
 
+                        <progress id="bar" max="100"> </progress>
+                        <div class="percent" id="percent">0%</div>
 
 
                         <div class="col-md-2">
-                            <button type="submit" class="btn btn-success" id="submitButton">Upload</button>
+                            <button type="submit"
+                                class="px-5 py-2 border-green-500 border text-green-500 rounded transition duration-300 hover:bg-green-700 hover:text-white focus:outline-none"
+                                id="submitButton" class="">Subir Archivo</button>
                         </div>
                     </div>
                 </form>
-                
-                    <progress id="bar" max="100"> </progress>
-                    <div class="percent" id="percent">0%</div>
-                
+
+
+
             </div>
         </div>
     </div>

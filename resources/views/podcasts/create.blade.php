@@ -36,7 +36,7 @@
                         <br>
                         @enderror
                         <div class="col-md-10">
-                            <input type="file" name="podcast_path" class="form-control" id="upload_file">
+                            <input type="file" accept=".mp3" name="podcast_path" class="form-control" id="upload_file">
                         </div>
                         @error('video_path')
                         <br>
@@ -45,16 +45,18 @@
                         @enderror
 
 
-
+                        <progress id="bar" max="100"> </progress>
+                        <div class="percent" id="percent">0%</div>
                         <div class="col-md-2">
-                            <button type="submit" class="btn btn-success" id="submitButton">Crear</button>
+                            <button type="submit"
+                                class="px-5 py-2 border-green-500 border text-green-500 rounded transition duration-300 hover:bg-green-700 hover:text-white focus:outline-none"
+                                id="submitButton">Subir Archivo</button>
                         </div>
                     </div>
                 </form>
-                
-                    <progress id="bar" max="100"> </progress>
-                    <div class="percent" id="percent">0%</div>
-                
+
+
+
             </div>
         </div>
     </div>
