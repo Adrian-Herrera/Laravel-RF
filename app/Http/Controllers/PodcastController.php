@@ -37,7 +37,7 @@ class PodcastController extends Controller
     public function store(Request $request)
     {
         $validatedData = $request->validate([
-            'name' => 'required',
+            'name' => 'required|min:6',
             'description' => 'required',
             'podcast_path' => 'required|file|mimes:mp3',
         ]);

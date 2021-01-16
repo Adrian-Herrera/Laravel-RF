@@ -49,39 +49,9 @@
     @stack('modals')
 
     @livewireScripts
-    <script type="text/javascript">
-        var bar = $('#bar');
-        var percent = $('#percent');
-        $('#myForm').ajaxForm({
-            beforeSubmit: function() {
-            var percentVal = 0;
-            bar.val(percentVal);
-            percent.html(percentVal + '%');
-            },
+    
 
-            uploadProgress: function(event, position, total, percentComplete) {
-            var percentVal = percentComplete + '%';
-            bar.val(percentComplete);
-            percent.html(percentVal);
-            },
-            
-            success: function() {
-            var percentVal = 100;
-            bar.val(percentVal);
-            percent.html(percentVal + '%');
-            // console.log("success");
-            },
-
-            complete: function(xhr) {
-                // console.log(xhr.responseText); 
-                if(xhr.responseText)
-                {
-                    window.location.href = xhr.responseText;
-                }
-                
-            }
-        }); 
-    </script>
+    
 
 </body>
 

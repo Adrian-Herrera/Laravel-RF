@@ -9,7 +9,7 @@
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg custom-editor">
 
-
+                
                 <form action="{{ route('videos.store') }}" method="POST" enctype="multipart/form-data" id="myForm">
                     @csrf
                     <div class="row">
@@ -35,6 +35,7 @@
                         <small>*{{$message}}</small>
                         <br>
                         @enderror
+                        
                         <div class="col-md-10">
                             <input type="file" accept=".mp4" name="video_path" class="form-control" id="upload_file"
                                 required>

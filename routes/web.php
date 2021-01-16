@@ -5,6 +5,7 @@ use App\Http\Controllers\ImageController;
 use App\Http\Controllers\VideoController;
 use App\Http\Controllers\PodcastController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\filepondController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\RouteController;
 
@@ -49,6 +50,8 @@ Route::resource('podcasts', PodcastController::class);
 
 
 Route::get('/nosotros', [ProfileController::class, 'index'])->name('nosotros.index');
+
+Route::post('filepond', [filepondController::class, 'upload']);
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
     return view('dashboard');
