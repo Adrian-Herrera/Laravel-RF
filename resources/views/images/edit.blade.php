@@ -12,10 +12,21 @@
                 <form action="{{route('images.update', $image)}}" method="post" class="w-full border border-grey p-2">
                     @csrf
                     @method('put')
+
+                    <div class="mx-auto max-w-xl max-h-80 overflow-hidden relative top-0 left-0">
+
+
+                        <img src="{{ URL::asset('storage/'.$image->image_path) }}" alt=""
+                            class=" w-full object-cover object-top relative top-0  left-0">
+                        <img src="{{ URL::asset('images/TransparentFade.png') }}" alt=""
+                            class="w-full max-h-80 absolute top-0  left-0">
+
+
+                    </div>
                     <label for="name" class="p-2"> Titulo
                         <br>
-                        <input type="text" name="name" class="border border-gray-800 rounded px-1 m-2"
-                            value="{{old('title', $image->name)}} ">
+                        <input type="text" name="name" class="form-input" value="{{old('title', $image->name)}} ">
+
                     </label>
                     @error('title')
                     <br>

@@ -1,12 +1,12 @@
 <x-app-layout>
     <x-slot name="header">
-        <div class="flex content-between">
+        <div class="flex justify-between">
 
-            <h2 class="font-semibold text-xl text-gray-800 leading-tight mx-3">
+            <h2 class="font-semibold text-xl text-gray-800 leading-tight my-auto">
                 Infografias
             </h2>
             <a class="px-5 py-2 border-green-500 border text-green-500 rounded transition duration-300 hover:bg-green-700 hover:text-white focus:outline-none"
-                href="{{ route('images.create') }}">new</a>
+                href="{{ route('images.create') }}">Agregar Infografia</a>
         </div>
     </x-slot>
 

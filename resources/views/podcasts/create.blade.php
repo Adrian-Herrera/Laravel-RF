@@ -13,22 +13,20 @@
                 <form action="{{ route('podcasts.store') }}" method="POST" enctype="multipart/form-data" id="myForm">
                     @csrf
                     <div class="row">
-                        <label class="text-gray-600 font-light">Nombre
+                        <label>Nombre
 
                             <div class="col-md-10">
-                                <input type="text" name="name"
-                                    class="w-full mt-2 mb-6 px-4 py-2 border rounded-lg text-gray-700 focus:outline-none focus:border-green-500">
+                                <input type="text" name="name" class="form-input" required>
                             </div>
                         </label>
-                        @error('name')
-                        <br>
-                        <small>*{{$message}}</small>
-                        <br>
-                        @enderror
+
                         <label>Descripción
 
                             <div class="col-md-10">
-                                <input type="text" name="description" class="w-full mt-2 mb-6 px-4 py-2 border rounded-lg text-gray-700 focus:outline-none focus:border-green-500">
+                                {{-- <input type="tex" name="description"
+                                    class="form-input"> --}}
+                                <textarea name="description" rows="4" cols="50" maxlength="500" class="form-input"></textarea>
+                                <small class="text-sm">Max: 500 caracteres</small>
                             </div>
                         </label>
                         @error('description')
@@ -37,7 +35,7 @@
                         <br>
                         @enderror
 
-                        <div class="col-md-10">
+                        <div class="col-md-10 my-2">
                             <label for="upload_file" class="inputfilelabel">Escoja un archivo
 
                             </label>
@@ -74,9 +72,7 @@
                         </div>
 
                         <div class="col-md-2">
-                            <button type="submit"
-                                class="px-5 py-2 border-green-500 border text-green-500 rounded transition duration-300 hover:bg-green-700 hover:text-white focus:outline-none"
-                                id="submitButton">Subir Archivo</button>
+                            <button type="submit" class="btn-upload" id="submitButton">Subir Archivo</button>
                         </div>
                     </div>
                 </form>
@@ -98,21 +94,29 @@
             rules: {
                 name: {
                 required: true,
-                minlength: 5
+                minlength: 6
                 },
                 description: {
                 required: true,
-                maxlength: 250
+                maxlength: 500
+                },
+                podcast_path: {
+                required: true
+                
                 }
             },
             messages: {
                 name: {
-                required: "Please Enter Name",
-                maxlength: "Your last name maxlength should be 50 characters long."
+                required: "El nombre no puede estar vacio.",
+                minlength: "El nombre debe contener mas de 6 caracteres."
                 },
                 description: {
-                required: "Please Enter Body",
-                maxlength: "Your last body maxlength should be 250 characters long."
+                required: "La descripción no puede estar vacio.",
+                maxlength: "La descripción debe contener menos de 500 caracteres."
+                },
+                podcast_path: {
+                required: "Debe seleccionar un archivo.",
+                
                 },
             }
         });

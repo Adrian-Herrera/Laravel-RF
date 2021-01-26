@@ -1,19 +1,19 @@
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            Articulos
+            Añadir Artículo
         </h2>
     </x-slot>
 
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-            <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg custom-editor">
+            <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg custom-editor ">
 
-                <form action="{{route('articulos.store')}}" method="post" class="w-full border border-grey p-2">
+                <form action="{{route('articulos.store')}}" method="post" class="w-full border border-grey p-2 ">
                     @csrf
-                    <label for="name" class="p-2"> Titulo
+                    <label for="title" class="p-2"> Titulo
                         <br>
-                        <input type="text" name="title" class="border border-gray-800 rounded px-1 m-2"
+                        <input type="text" name="title" class="form-input"
                             value="{{old('title')}} ">
                     </label>
                     @error('title')
@@ -22,10 +22,10 @@
                     <br>
                     @enderror
                     <br>
-                    <label for="description" class="p-2"> Descripcion
+                    <label for="description" class="p-2"> Descripción
                         <br>
                         <textarea name="description" id="" cols="30" rows="10" maxlength="300"
-                            class="border border-gray-800 rounded px-1 m-2 w-5/6"></textarea>
+                            class="form-input"></textarea>
                     </label>
                     @error('description')
                     <br>
@@ -33,12 +33,12 @@
                     <br>
                     @enderror
                     <br>
-                    <label for="active" class="p-2"> Publico
+                    <label for="active" class="p-2"> Estado
                         <br>
-                        <select name="active" class="m-2 p-1 bg-blue-300">
+                        <select name="active" class="m-2 p-1 border focus:outline-none focus:ring focus:border-blue-300 ">
 
-                            <option value="1">Activo</option>
-                            <option value="0">Deshabilitado</option>
+                            <option value="1">Publico</option>
+                            <option value="0">Oculto</option>
 
                         </select>
                     </label>

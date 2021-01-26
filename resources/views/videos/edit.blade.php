@@ -14,7 +14,7 @@
                     @method('put')
                     <label for="name" class="p-2"> Titulo
                         <br>
-                        <input type="text" name="name" class="border border-gray-800 rounded px-1 m-2"
+                        <input type="text" name="name" class="form-input"
                             value="{{old('title', $video->name)}} ">
                     </label>
                     @error('title')
@@ -25,7 +25,7 @@
                     <br>
                     <label for="description" class="p-2"> Descripción
                         <br>
-                        <textarea name="description" cols="30" rows="10" class="border text-left">{{old('description', $video->description)}}</textarea>
+                        <textarea name="description" rows="4" cols="50" maxlength="500" class="form-input">{{old('description', $video->description)}}</textarea>
 
                     </label>
                     @error('description')

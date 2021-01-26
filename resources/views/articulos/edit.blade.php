@@ -13,25 +13,21 @@
                     class="w-full border border-grey p-2">
                     @csrf
                     @method('put')
-                    <label for="name" class="p-2">
-                        <div class=" bg-blue-400 w-auto">
-                            Titulo</div>
+                    <label for="name" class="px-2">
+                        Título
                         <br>
-                        <input type="text" maxlength="250" name="title"
-                            class="border border-gray-800 rounded px-1 m-2 w-5/6" value="{{$articulo->title}}">
+                        <input type="text" maxlength="250" name="title" class="form-input" value="{{$articulo->title}}">
                     </label>
                     <br>
-                    <label for="description" class="p-2"> Descripcion
+                    <label for="description" class="p-2"> Descripción
                         <br>
                         <textarea name="description" id="" cols="30" rows="10" maxlength="300"
-                            class="border border-gray-800 rounded px-1 m-2 w-5/6">{{$articulo->description}}</textarea>
-                        {{-- <input type="text" name="description"class="border border-gray-800 rounded px-1 m-2" value="{{$articulo->description}}">
-                        --}}
+                            class="form-input">{{$articulo->description}}</textarea>
                     </label>
                     <br>
                     <label for="active" class="p-2"> Publico
                         <br>
-                        <select name="active" class="m-2 p-1 bg-blue-300">
+                        <select name="active" class="m-2 p-1 border focus:outline-none focus:ring focus:border-blue-300">
                             @if ($articulo->active == 1)
 
                             <option value="1" selected>Activo</option>
