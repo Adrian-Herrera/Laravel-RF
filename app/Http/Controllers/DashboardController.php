@@ -17,7 +17,8 @@ class DashboardController extends Controller
     public function dashboard()
     {
 
-        $articulos = Articulo::count();
+        $articulos = Articulo::all();
+        // return $articulos;
         $infografias = Image::count();
         $videos = Video::count();
         $podcast = Podcast::count();

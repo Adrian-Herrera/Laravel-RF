@@ -23,6 +23,8 @@ class ArticuloController extends Controller
 
     public function show(Articulo $articulo)
     {
+        
+        visits($articulo)->increment();
         return view('articulos.show', compact('articulo'));
     }
 

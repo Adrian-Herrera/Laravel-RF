@@ -8,10 +8,13 @@
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg p-2">
+                <p class="font-bold text-center text-xl border-b-2 text-gray-700">N° de publicaciones</p>
                 <!-- Cards -->
                 <div class="flex flex-wrap">
-                    <div class="w-full lg:w-6/12 xl:w-3/12 px-4 transition duration-500 ease-in-out transform hover:scale-105">
-                        <div class="relative flex flex-col min-w-0 break-words bg-white rounded mb-6 xl:mb-0 shadow-lg transition duration-500 ease-in-out hover:bg-cool-gray-200">
+                    <div
+                        class="w-full lg:w-6/12 xl:w-3/12 px-4 transition duration-500 ease-in-out transform hover:scale-105">
+                        <div
+                            class="relative flex flex-col min-w-0 break-words bg-white rounded mb-6 xl:mb-0 shadow-lg transition duration-500 ease-in-out hover:bg-cool-gray-200">
                             <div class="flex-auto p-4">
                                 <div class="flex flex-wrap">
                                     <div class="relative w-full pr-4 max-w-full flex-grow flex-1">
@@ -19,7 +22,7 @@
                                             Articulos
                                         </h5>
                                         <span class="font-semibold text-xl text-gray-800">
-                                            {{$articulos}}
+                                            {{$articulos->count()}}
                                         </span>
                                     </div>
                                     <div class="relative w-auto pl-4 flex-initial">
@@ -37,8 +40,10 @@
                             </div>
                         </div>
                     </div>
-                    <div class="w-full lg:w-6/12 xl:w-3/12 px-4 transition duration-500 ease-in-out transform hover:scale-105">
-                        <div class="relative flex flex-col min-w-0 break-words bg-white rounded mb-6 xl:mb-0 shadow-lg transition duration-500 ease-in-out hover:bg-cool-gray-200">
+                    <div
+                        class="w-full lg:w-6/12 xl:w-3/12 px-4 transition duration-500 ease-in-out transform hover:scale-105">
+                        <div
+                            class="relative flex flex-col min-w-0 break-words bg-white rounded mb-6 xl:mb-0 shadow-lg transition duration-500 ease-in-out hover:bg-cool-gray-200">
                             <div class="flex-auto p-4">
                                 <div class="flex flex-wrap">
                                     <div class="relative w-full pr-4 max-w-full flex-grow flex-1">
@@ -64,8 +69,10 @@
                             </div>
                         </div>
                     </div>
-                    <div class="w-full lg:w-6/12 xl:w-3/12 px-4 transition duration-500 ease-in-out transform hover:scale-105">
-                        <div class="relative flex flex-col min-w-0 break-words bg-white rounded mb-6 xl:mb-0 shadow-lg transition duration-500 ease-in-out hover:bg-cool-gray-200">
+                    <div
+                        class="w-full lg:w-6/12 xl:w-3/12 px-4 transition duration-500 ease-in-out transform hover:scale-105">
+                        <div
+                            class="relative flex flex-col min-w-0 break-words bg-white rounded mb-6 xl:mb-0 shadow-lg transition duration-500 ease-in-out hover:bg-cool-gray-200">
                             <div class="flex-auto p-4">
                                 <div class="flex flex-wrap">
                                     <div class="relative w-full pr-4 max-w-full flex-grow flex-1">
@@ -91,8 +98,10 @@
                             </div>
                         </div>
                     </div>
-                    <div class="w-full lg:w-6/12 xl:w-3/12 px-4 transition duration-500 ease-in-out transform hover:scale-105 ">
-                        <div class="relative flex flex-col min-w-0 break-words bg-white rounded mb-6 xl:mb-0 shadow-lg transition duration-500 ease-in-out hover:bg-cool-gray-200 ">
+                    <div
+                        class="w-full lg:w-6/12 xl:w-3/12 px-4 transition duration-500 ease-in-out transform hover:scale-105 ">
+                        <div
+                            class="relative flex flex-col min-w-0 break-words bg-white rounded mb-6 xl:mb-0 shadow-lg transition duration-500 ease-in-out hover:bg-cool-gray-200 ">
                             <div class="flex-auto p-4">
                                 <div class="flex flex-wrap">
                                     <div class="relative w-full pr-4 max-w-full flex-grow flex-1">
@@ -119,8 +128,64 @@
                             </div>
                         </div>
                     </div>
+                    <table class="w-4/5 table-auto mx-auto my-5">
+                        <thead class="justify-between">
+                            <tr class="font-bold text-lg text-center bg-gray-800">
+                                <th class="px-6 py-3 text-gray-300">Articulos</th>
+                                <th class="px-6 py-3 text-gray-300">Vistas Totales</th>
+                            </tr>
+                        </thead>
+                        <tbody class="bg-gray-200">
+                            @foreach ($articulos as $item)
+
+                            <tr class="font-normal text-left bg-white border-4 border-gray-200 ">
+                                <th class="font-semibold p-2">{{$item->title}}</th>
+                                <th class="font-semibold p-2">{{visits($item)->count()}}</th>
+                            </tr>
+                            @endforeach
+                        </tbody>
+                    </table>
+
+                    <div class="w-4/5 mx-auto my-5 flex flex-row flex-wrap justify-between">
+                        <div class=" text-left w-full lg:w-6/12 xl:w-3/12 ">
+                            <div class=" border-2 border-gray-600 rounded-md m-2">
+                                <div class="bg-gray-800 p-2">
+                                    <p class="font-bold bg-gray-800 text-white">Vistas las ultimas 24 horas</p>
+                                </div>
+                                <p class="font-semibold bg-white p-2">{{visits('App\Models\Articulo')->period('day')->count()}} Vistas</p>
+                            </div>
+                        </div>
+                        <div class=" text-left w-full lg:w-6/12 xl:w-3/12 ">
+                            <div class=" border-2 border-gray-600 rounded-md m-2">
+                                <div class="bg-gray-800 p-2">
+                                    <p class="font-bold bg-gray-800 text-white">Vistas la ultima semana</p>
+                                </div>
+                                <p class="font-semibold bg-white p-2">{{visits('App\Models\Articulo')->period('week')->count()}} Vistas</p>
+                            </div>
+                        </div>
+                        <div class=" text-left w-full lg:w-6/12 xl:w-3/12 ">
+                            <div class=" border-2 border-gray-600 rounded-md m-2">
+                                <div class="bg-gray-800 p-2">
+                                    <p class="font-bold bg-gray-800 text-white">Vistas el ultimo mes</p>
+                                </div>
+                                <p class="font-semibold bg-white p-2">{{visits('App\Models\Articulo')->period('month')->count()}} Vistas</p>
+                            </div>
+                        </div>
+                        <div class=" text-left w-full lg:w-6/12 xl:w-3/12 ">
+                            <div class=" border-2 border-gray-600 rounded-md m-2">
+                                <div class="bg-gray-800 p-2">
+                                    <p class="font-bold bg-gray-800 text-white">Vistas el ultimo año</p>
+                                </div>
+                                <p class="font-semibold bg-white p-2">{{visits('App\Models\Articulo')->period('year')->count()}} Vistas</p>
+                            </div>
+                        </div>
+                        
+
+                    </div>
+                    {{-- <canvas id="myChart" width="400" height="200"></canvas> --}}
                 </div>
             </div>
         </div>
     </div>
+    
 </x-app-layout>

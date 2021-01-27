@@ -164,7 +164,9 @@ return [
 
         /*
          * Package Service Providers...
+         * 
          */
+        awssat\Visits\VisitsServiceProvider::class,
 
         /*
          * Application Service Providers...
