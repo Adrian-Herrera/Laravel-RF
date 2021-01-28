@@ -6,6 +6,7 @@ use App\Http\Controllers\VideoController;
 use App\Http\Controllers\PodcastController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\DocumentController;
 use App\Http\Controllers\filepondController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\RouteController;
@@ -48,6 +49,8 @@ Route::resource('videos', VideoController::class);
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard/podcasts', [PodcastController::class, 'dashboard'])->name('podcasts.dashboard');
 
 Route::resource('podcasts', PodcastController::class);
+
+Route::resource('documents', DocumentController::class);
 
 
 Route::get('/nosotros', [ProfileController::class, 'index'])->name('nosotros.index');

@@ -11,7 +11,7 @@
         <div class="row my-2 item">
                 <div class="col-3 p-3">
 
-                        <img src={{$item->imgURL}} alt="" class="img-fluid rounded">
+                        <img src={{ URL::asset('storage/'.$item->imgURL) }} alt="" class="img-fluid rounded">
                 </div>
                 <div class="col-4 p-3">
 

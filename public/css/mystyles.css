@@ -93,3 +93,24 @@ body {
     margin: 5px;
     padding: 2px;
 }
+
+.cssonly a[href$=".pdf"]:before {
+    /* PDF file */
+    width: 16px;
+    vertical-align: middle;
+    margin: 4px 0 2px 4px;
+    padding: 4px 0 1px 0px;
+    background-color: #fff;
+    color: red;
+    border: 1px solid red;
+    border-top-right-radius: 7px;
+    box-shadow: 1px 1px #ccc;
+    font-size: 7.7px;
+    font-weight: 700;
+    font-family: sans-serif;
+    line-height: 16px;
+    text-decoration: none;
+    display: inline-block;
+    box-sizing: content-box;
+    content: 'PDF';
+  }

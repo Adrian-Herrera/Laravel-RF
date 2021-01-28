@@ -9,14 +9,14 @@
             <article class="ck-content">
                 <header class="d-flex flex-column justify-content-between ">
 
-                    <img src="{{$articulo->imgURL}}" alt="" class="blog-image rounded m-2">
+                    <img src="{{ URL::asset('storage/'.$articulo->imgURL) }}" alt="" class="blog-image rounded m-2">
 
                     <h1 class="m-2">{{$articulo->title}}</h1>
-                    <h1>Contador de visitas{{visits($articulo)->count()}}</h1>
+                    
 
                     <div class="d-flex flex-row justify-content-between m-2">
-                        <p class="article-info my-2">Escrito el: 24/11/2020</p>
-                        <p class="article-info my-2">Modificado el: 24/11/2020</p>
+                        <p class="article-info my-2">Escrito el: {{$articulo->created_at}}</p>
+                        <p class="article-info my-2">Modificado el: {{$articulo->updated_at}}</p>
                     </div>
 
                     <div>
@@ -36,18 +36,21 @@
         <div class="col-4 p-1">
             <div class="sticky-top" style="padding-top: 56px;">
 
-                <h1>Redes Sociales</h1>
+                <h1>Documentos</h1>
                 <hr>
                 <ul>
-                    <li>
-                        <a href="">Facebook</a>
-                    </li>
-                    <li>
-                        <a href="">Twitter</a>
-                    </li>
-                    <li>
-                        <a href="">Youtube</a>
-                    </li>
+                @foreach ($documents as $item)
+                    <div>
+                        <div style="background:url('http://wwwimages.adobe.com/content/dam/acom/en/legal/images/badges/Adobe_PDF_file_icon_32x32.png');" class="w-20 cssonly">
+
+                        </div>
+                        <p></p>
+                    </div>
+                <li>
+                    <p class="cssonly"><a class="text-decoration-none" href="{{ URL::asset('storage/'.$item->doc_path) }}"> {{$item->name}}</a></p>
+                </li>
+                
+                @endforeach
                 </ul>
             </div>
         </div>
