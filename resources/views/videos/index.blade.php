@@ -1,13 +1,6 @@
 @extends('layouts.plantilla')
 
 @section('headerScript')
-{{-- <link href="https://unpkg.com/video.js@7/dist/video-js.min.css" rel="stylesheet" />
-
-<!-- City -->
-<link href="https://unpkg.com/@videojs/themes@1/dist/city/index.css" rel="stylesheet" />
-
-<link rel="stylesheet" href="{{ URL::asset('css/videojs-playlist-ui.vertical.css') }}"> --}}
-
 
 <link rel="stylesheet" href="https://cdn.plyr.io/3.6.3/plyr.css" />
 
@@ -18,24 +11,27 @@
 <div class="custom-title">
         <h1>VIDEOS</h1>
 </div>
-<div class="container d-flex justify-content-around flex-wrap ">
-
-        <div class="row">
 
 
-                @foreach ($videos as $item)
-                <div class="col-6 p-2">
-                        
-                        <video id="myVideo" class="w-100 js-player" playsinline controls preload="meta">
-                                <source src="{{ URL::asset('storage/'.$item->video_path) }}" type="video/mp4" />
-                        </video>
+<div class="max-w-6xl mx-auto flex flex-row flex-wrap border-blue-500">
+
+        @foreach ($videos as $item)
+        <div class="w-full md:w-1/2 xl:w-1/3 p-3  ">
+
+                <video id="myVideo" class="js-player w-full" playsinline controls preload="meta">
+                        <source src="{{ URL::asset('storage/'.$item->video_path) }}" type='video/mp4' />
+                </video>
+                <div class="w-full border">
+
+                        <h1 class="text-xl font-extrabold uppercase p-2">{{$item->name}}</h1>
+                        <small id="date"
+                                class="italic text-sm p-2"><?php echo date_format($item->created_at,"d/m/Y");  ?></small>
+                        <p class="text-justify p-2">{{$item->description}}</p>
                 </div>
-                @endforeach
         </div>
-</div>
+        @endforeach
 
 </div>
-
 
 @endsection
 

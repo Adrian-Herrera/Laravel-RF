@@ -6,7 +6,9 @@
 <div class="container-fluid custom-body my-auto">
 
 
-        <h1>Nosotros</h1>
+        <div class="custom-title">
+                <h1>NOSOTROS</h1>
+        </div>
 
 
         <div class="row">

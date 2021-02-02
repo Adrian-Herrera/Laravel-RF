@@ -2,60 +2,77 @@
 
 @section('content')
 
+<div class="p-3 xl:m-3 xl:p-0 flex flex-col xl:flex-row">
 
-<div class="container article-title">
-    <div class="row p-1 d-flex flex-row justify-content-between">
-        <div class="col-8 p-3 border-right " style="border-color: grey">
-            <article class="ck-content">
-                <header class="d-flex flex-column justify-content-between ">
+    <article class="w-full xl:w-9/12">
+        <header class="flex flex-col">
 
-                    <img src="{{ URL::asset('storage/'.$articulo->imgURL) }}" alt="" class="blog-image rounded m-2">
+            <img src="{{ URL::asset('storage/'.$articulo->imgURL) }}" alt=""
+                class="w-full h-auto object-cover md:max-h-72 ">
 
-                    <h1 class="m-2">{{$articulo->title}}</h1>
-                    
+            <h1 class="uppercase text-lg font-bold my-3 tracking-wide md:font-extrabold md:text-xl">{{$articulo->title}}
+            </h1>
 
-                    <div class="d-flex flex-row justify-content-between m-2">
-                        <p class="article-info my-2">Escrito el: {{$articulo->created_at}}</p>
-                        <p class="article-info my-2">Modificado el: {{$articulo->updated_at}}</p>
-                    </div>
 
-                    <div>
-                        <p class="article-author m-2">Escrito por: Fulano</p>
-                    </div>
-                </header>
-                <div class="p-2 custom-content">
+            <div class="flex justify-between italic">
+                <p id="created_at">Escrito el: {{$articulo->created_at}}</p>
+                <p id="updated_at">Modificado el: {{$articulo->updated_at}}</p>
+            </div>
 
-                    {!!$articulo->text!!}
-                    
+            {{-- <div>
+                <p class="">Escrito por: Fulano</p>
+            </div> --}}
+        </header>
+        <div class="ck-content my-3">
+
+            {!!$articulo->text!!}
+
+
+        </div>
+    </article>
+
+
+    <div id="docs" class="w-full xl:w-3/12 xl:px-5">
+
+        <h1>Documentos</h1>
+        <hr>
+        <ul>
+            @foreach ($documents as $item)
+            <div>
+                <div style="background:url('http://wwwimages.adobe.com/content/dam/acom/en/legal/images/badges/Adobe_PDF_file_icon_32x32.png');"
+                    class="w-20 cssonly">
 
                 </div>
-            </article>
-
-        </div>
-
-        <div class="col-4 p-1">
-            <div class="sticky-top" style="padding-top: 56px;">
-
-                <h1>Documentos</h1>
-                <hr>
-                <ul>
-                @foreach ($documents as $item)
-                    <div>
-                        <div style="background:url('http://wwwimages.adobe.com/content/dam/acom/en/legal/images/badges/Adobe_PDF_file_icon_32x32.png');" class="w-20 cssonly">
-
-                        </div>
-                        <p></p>
-                    </div>
-                <li>
-                    <p class="cssonly"><a class="text-decoration-none" href="{{ URL::asset('storage/'.$item->doc_path) }}"> {{$item->name}}</a></p>
-                </li>
-                
-                @endforeach
-                </ul>
+                <p></p>
             </div>
-        </div>
+            <li>
+                <p class="cssonly uppercase truncate"><a class="text-decoration-none"
+                        href="{{ URL::asset('storage/'.$item->doc_path) }}"> {{$item->name}}</a></p>
+            </li>
+
+            @endforeach
+        </ul>
     </div>
+
 </div>
 
+<script>
+    var doc = document.getElementById("docs");
+    var docs = <?php echo $documents?>;
+    // console.log(Object.keys(docs).length );
+    if (docs.length == 0) {
+        doc.classList.add("hidden");
+    }
+
+    var date1 = document.getElementById("created_at");
+    var date2 = document.getElementById("updated_at");
+    var created_at = "<?php echo $articulo->created_at ?>";
+    var updated_at = "<?php echo $articulo->updated_at ?>";
+    if (created_at == updated_at) {
+        date2.classList.add("hidden");
+    }
+    date1.innerText = "Escrito el: " + moment(created_at).format("D MMMM YYYY"); 
+    date2.innerText = "Modificado el: " + moment(updated_at).format("D MMMM YYYY"); 
+</script>
 
 @endsection
