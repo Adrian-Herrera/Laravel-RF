@@ -71,7 +71,7 @@
     <!--
       Mobile menu
     -->
-    <div x-bind:class="{ 'hidden': open }">
+    <div x-bind:class="{ 'hidden': open }" class="lg:hidden">
         <div class="px-2 pt-2 pb-3 space-y-1">
             <a class="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium {{request()->routeIs('articulos.*') ? 'bg-gray-900 text-white' : ''}}"
                 href="{{ route('articulos.index') }}">Articulos</span></a>

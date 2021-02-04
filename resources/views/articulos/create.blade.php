@@ -44,7 +44,7 @@
                         </select>
                     </label>
                     <br>
-                    <label for="imgURl" class="p-2"> Imagen URL
+                    <label for="imgURl" class="p-2"> Portada
                         <br>
                         <input type="file" accept=".jpg, .jpeg, .png" name="imgURL" class=" rounded px-1 m-2"
                             value="{{old('imgURL')}}">

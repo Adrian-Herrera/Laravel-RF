@@ -2,58 +2,60 @@
 
 @section('content')
 
-<div class="p-3 xl:m-3 xl:p-0 flex flex-col xl:flex-row">
+<div class=" max-w-6xl mx-auto">
 
-    <article class="w-full xl:w-9/12">
-        <header class="flex flex-col">
-
-            <img src="{{ URL::asset('storage/'.$articulo->imgURL) }}" alt=""
-                class="w-full h-auto object-cover md:max-h-72 ">
-
-            <h1 class="uppercase text-lg font-bold my-3 tracking-wide md:font-extrabold md:text-xl">{{$articulo->title}}
-            </h1>
+    <img src="{{ URL::asset('storage/'.$articulo->imgURL) }}" alt="" class="w-full h-auto object-cover md:max-h-96 ">
+    <div class="w-full mt-8 flex flex-col lg:flex-row">
 
 
-            <div class="flex justify-between italic">
-                <p id="created_at">Escrito el: {{$articulo->created_at}}</p>
-                <p id="updated_at">Modificado el: {{$articulo->updated_at}}</p>
-            </div>
+        <article class="w-full xl:w-9/12 border-r-2">
+            <header class="flex flex-col">
 
-            {{-- <div>
+                <h1 class="uppercase text-lg font-bold my-3 tracking-wide md:font-extrabold md:text-xl">
+                    {{$articulo->title}}
+                </h1>
+
+
+                <div class="flex justify-between italic">
+                    <p id="created_at">Escrito el: {{$articulo->created_at}}</p>
+                    <p id="updated_at">Modificado el: {{$articulo->updated_at}}</p>
+                </div>
+
+                {{-- <div>
                 <p class="">Escrito por: Fulano</p>
             </div> --}}
-        </header>
-        <div class="ck-content my-3">
+            </header>
+            <div class="ck-content my-3">
 
-            {!!$articulo->text!!}
-
-
-        </div>
-    </article>
+                {!!$articulo->text!!}
 
 
-    <div id="docs" class="w-full xl:w-3/12 xl:px-5">
-
-        <h1>Documentos</h1>
-        <hr>
-        <ul>
-            @foreach ($documents as $item)
-            <div>
-                <div style="background:url('http://wwwimages.adobe.com/content/dam/acom/en/legal/images/badges/Adobe_PDF_file_icon_32x32.png');"
-                    class="w-20 cssonly">
-
-                </div>
-                <p></p>
             </div>
-            <li>
-                <p class="cssonly uppercase truncate"><a class="text-decoration-none"
-                        href="{{ URL::asset('storage/'.$item->doc_path) }}"> {{$item->name}}</a></p>
-            </li>
+        </article>
 
-            @endforeach
-        </ul>
+
+        <div id="docs" class="w-full xl:w-3/12 xl:px-5 ">
+
+            <h1 class="font-bold text-lg text-center">Documentos</h1>
+            <hr>
+            <ul>
+                @foreach ($documents as $item)
+                <div>
+                    <div style="background:url('http://wwwimages.adobe.com/content/dam/acom/en/legal/images/badges/Adobe_PDF_file_icon_32x32.png');"
+                        class="w-20 cssonly">
+
+                    </div>
+                    <p></p>
+                </div>
+                <li>
+                    <p class="cssonly uppercase"><a class="text-decoration-none hover:text-gray-500"
+                            href="{{ URL::asset('storage/'.$item->doc_path) }}"> {{$item->name}}</a></p>
+                </li>
+
+                @endforeach
+            </ul>
+        </div>
     </div>
-
 </div>
 
 <script>

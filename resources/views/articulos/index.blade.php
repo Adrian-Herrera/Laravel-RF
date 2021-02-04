@@ -18,14 +18,14 @@
                         <div>
 
                                 <a href="{{ route('articulos.show', $item) }}">
-                                        <h1 class="font-extrabold text-xl pt-3 pl-3">
+                                        <h1 class="font-extrabold text-xl pt-3 pl-1 mx-2 border-b-2 border-blue-800">
                                                 {{$item->title}}
                                         </h1>
                                 </a>
 
 
                                 <div class="p-3">
-                                        <p id="date" class="font-bold"></p>
+                                        <small id="date" class="italic"><?php echo date_format($item->created_at,"d/m/Y");  ?></small>
                                         <p >{{$item->description}}</p>
                                 </div>
 
@@ -46,10 +46,5 @@
 </div>
 
 
-<script>
-        var date = document.getElementById("date");
-        var val = "<?php echo $item->created_at ?>";
-        date.innerText = moment(val).format("D MMMM YYYY"); 
 
-</script>
 @endsection

@@ -13,16 +13,15 @@
 </div>
 
 
-<div class="max-w-6xl mx-auto flex flex-row flex-wrap border-blue-500">
+<div class="max-w-6xl mx-auto flex flex-row flex-wrap">
 
         @foreach ($videos as $item)
-        <div class="w-full md:w-1/2 xl:w-1/3 p-3  ">
+        <div class="w-full md:w-1/2 xl:w-1/3 p-3">
 
                 <video id="myVideo" class="js-player w-full" playsinline controls preload="meta">
                         <source src="{{ URL::asset('storage/'.$item->video_path) }}" type='video/mp4' />
                 </video>
                 <div class="w-full border">
-
                         <h1 class="text-xl font-extrabold uppercase p-2">{{$item->name}}</h1>
                         <small id="date"
                                 class="italic text-sm p-2"><?php echo date_format($item->created_at,"d/m/Y");  ?></small>

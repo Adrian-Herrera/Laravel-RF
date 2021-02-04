@@ -3,33 +3,33 @@
 @section('content')
 
 
-<div class="container-fluid custom-body my-auto">
 
 
-        <div class="custom-title">
-                <h1>NOSOTROS</h1>
-        </div>
+
+<div class="custom-title">
+        <h1>NOSOTROS</h1>
+</div>
 
 
-        <div class="row">
-                @foreach ($profiles as $item)
-                <div class="col-md-4 col-sm-6 col-xs-12 my-2">
-                        <div class="card p-3">
-                                <div class="d-flex align-items-center">
-                                        <div class="col-4 "> <img
-                                                        src="{{ URL::asset('storage/'.$item->profile_photo_path) }}"
-                                                        class="rounded img-fluid"> </div>
-                                        <div class="col-8 p-2">
-                                                <h4 class="fw-bold">{{$item->name}}</h4>
-                                                <span>{{$item->email}}</span>
-                                        </div>
-                                </div>
+<div class="max-w-6xl mx-auto flex flex-wrap justify-center md:mt-8">
+        @foreach ($profiles as $item)
+
+        <div class="w-full md:w-5/12 lg:w-1/3 bg-gray-200 p-5 my-8 mx-3 md:my-0 flex flex-col justify-center">
+                <div class="w-full flex justify-center h-12">
+                        
+                        <div class=" h-24 w-24 ">
+                                <img src="{{ URL::asset('storage/'.$item->profile_photo_path) }}"
+                                        class="w-full h-full -mt-12 rounded-full  flex items-center justify-center border-4 border-white ">
                         </div>
                 </div>
-                @endforeach
+                <div class="rounded-md text-center flex flex-col mt-5">
+                        <h4 class="font-bold text-lg">{{$item->name}}</h4>
+                        <p class="italic">{{$item->email}}</p>
+                </div>
         </div>
 
 
+        @endforeach
 </div>
 
 @endsection
