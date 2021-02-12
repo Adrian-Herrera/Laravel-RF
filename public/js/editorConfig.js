@@ -13,7 +13,7 @@ ClassicEditor.create(document.querySelector("#editor"), {
             "indent",
             "outdent",
             "|",
-            "imageInsert",
+            // "imageInsert",
             "blockQuote",
             "insertTable",
             "mediaEmbed",
