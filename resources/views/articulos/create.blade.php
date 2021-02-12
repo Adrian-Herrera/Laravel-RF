@@ -22,7 +22,7 @@
                     <br>
                     @enderror
                     <br>
-                    <label for="description" class="p-2"> Descripción
+                    <label for="description" class="p-2"> Descripción <small>*Maximo de 300 caracteres</small>
                         <br>
                         <textarea name="description" id="" cols="30" rows="10" maxlength="300"
                             class="form-input"></textarea>

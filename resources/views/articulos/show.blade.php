@@ -3,12 +3,17 @@
 @section('content')
 
 <div class=" max-w-6xl mx-auto">
+    <div class="w-10/12 mx-auto">
 
-    <img src="{{ URL::asset('storage/'.$articulo->imgURL) }}" alt="" class="w-full h-auto object-cover md:max-h-96 ">
+        <div class="aspect-w-16 aspect-h-9">
+
+            <img src="{{ URL::asset('storage/'.$articulo->imgURL) }}" alt="" class="">
+        </div>
+    </div>
     <div class="w-full mt-8 flex flex-col lg:flex-row">
 
 
-        <article class="w-full xl:w-9/12 border-r-2">
+        <article class="w-full xl:w-9/12 xl:border-r-2 xl:border-l-2 xl:px-3 mx-auto">
             <header class="flex flex-col">
 
                 <h1 class="uppercase text-lg font-bold my-3 tracking-wide md:font-extrabold md:text-xl">
@@ -66,10 +71,10 @@
         doc.classList.add("hidden");
     }
 
-    var date1 = document.getElementById("created_at");
-    var date2 = document.getElementById("updated_at");
-    var created_at = "<?php echo $articulo->created_at ?>";
-    var updated_at = "<?php echo $articulo->updated_at ?>";
+    let date1 = document.getElementById("created_at");
+    let date2 = document.getElementById("updated_at");
+    let created_at = "<?php echo $articulo->created_at ?>";
+    let updated_at = "<?php echo $articulo->updated_at ?>";
     if (created_at == updated_at) {
         date2.classList.add("hidden");
     }

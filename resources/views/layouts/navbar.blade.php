@@ -27,12 +27,10 @@
                 <div class="flex-shrink-0 flex items-center">
 
                     <a href={{ url('/') }}>
-                        <img class="block h-8 w-auto"
-                            src="https://tailwindui.com/img/logos/workflow-logo-indigo-500-mark-white-text.svg"
-                            alt="Workflow">
+                        <img class="block h-14 w-auto" src="images/LogoNavBar.png" alt="RiesgoFinancieroLogo">
                     </a>
                 </div>
-                <div class="hidden lg:flex lg:ml-6 justify-between w-full">
+                <div class="hidden lg:flex lg:ml-6 py-3 justify-between w-full">
                     <div class="flex space-x-4 ">
                         <a class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium {{request()->routeIs('articulos.*') ? 'bg-gray-700 text-white' : ''}}"
                             href="{{ route('articulos.index') }}">Articulos</span></a>

@@ -81,6 +81,10 @@ class DocumentController extends Controller
      */
     public function destroy(Document $document)
     {
-        //
+        Storage::delete('public/' . $document->doc_path);
+
+        $document->delete();
+
+        return redirect()->route('podcasts.dashboard');
     }
 }
