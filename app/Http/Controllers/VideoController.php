@@ -67,7 +67,7 @@ class VideoController extends Controller
     {
         $video->update($request->all());
 
-        return redirect()->route('videos.dashboard');
+        return redirect()->route('videos.dashboard')->with('actualizar', 'ok');
     }
 
 
@@ -78,6 +78,6 @@ class VideoController extends Controller
 
         $video->delete();
 
-        return redirect()->route('videos.dashboard');
+        return redirect()->route('videos.dashboard')->with('eliminar', 'ok');
     }
 }

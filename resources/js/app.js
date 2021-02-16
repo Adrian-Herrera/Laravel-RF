@@ -2,6 +2,7 @@ require("./bootstrap");
 
 require("alpinejs");
 
+window.Swal = require("sweetalert2");
 window.moment = require("moment");
 moment.locale("es", {
     months: "Enero_Febrero_Marzo_Abril_Mayo_Junio_Julio_Agosto_Septiembre_Octubre_Noviembre_Diciembre".split(
@@ -17,4 +18,4 @@ moment.locale("es", {
 moment().locale("es");
 
 // console.log(moment().format());
-var Chart = require("chart.js");
+// var Chart = require("chart.js");

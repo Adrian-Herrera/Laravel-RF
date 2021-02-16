@@ -54,7 +54,7 @@
                                         <a href="{{route('images.edit', $item)}}"
                                             class="px-3 py-2 border-yellow-500 border text-yellow-500 rounded transition duration-300 hover:bg-yellow-700 hover:text-white focus:outline-none inline-block">Editar</a>
                                         <form action="{{route('images.destroy', $item)}}" method="POST"
-                                            class="inline-block">
+                                            class="inline-block formulario-eliminar">
                                             @csrf
                                             @method('delete')
                                             <button
@@ -71,4 +71,50 @@
             </div>
         </div>
     </div>
+    <script src="{{ URL::asset('js/sweetalert2.all.min.js') }}"></script>
+    <!-- Optional: include a polyfill for ES6 Promises for IE11 -->
+    <script src="//cdn.jsdelivr.net/npm/promise-polyfill@8/dist/polyfill.js"></script>
+
+    @if (session('eliminar') == 'ok')
+
+    <script>
+        Swal.fire(
+                    'Borrado!',
+                    'La imagen ha sido eliminada.',
+                    'success'
+                    )
+    </script>
+
+    @endif
+    @if (session('actualizar') == 'ok')
+
+    <script>
+        Swal.fire(
+                    'Actualizado!',
+                    'La imagen ha sido actualizada.',
+                    'success'
+                    )
+    </script>
+
+    @endif
+
+    <script>
+        $('.formulario-eliminar').submit(function(e){
+            e.preventDefault();
+
+            Swal.fire({
+                title: 'Estás seguro?',
+                text: "No podras revertir esto!",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Si, borralo!'
+                }).then((result) => {
+                if (result.isConfirmed) {
+                    this.submit();
+                }
+            })
+        });
+    </script>
 </x-app-layout>

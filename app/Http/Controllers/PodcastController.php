@@ -66,17 +66,17 @@ class PodcastController extends Controller
     {
         $podcast->update($request->all());
 
-        return redirect()->route('podcasts.dashboard');
+        return redirect()->route('podcasts.dashboard')->with('actualizar', 'ok');
     }
 
 
     public function destroy(Podcast $podcast)
     {
         
-        Storage::delete('public/' . $podcast->podcast_path);
+        // Storage::delete('public/' . $podcast->podcast_path);
 
-        $podcast->delete();
+        // $podcast->delete();
 
-        return redirect()->route('podcasts.dashboard');
+        return redirect()->route('podcasts.dashboard')->with('eliminar', 'ok');
     }
 }

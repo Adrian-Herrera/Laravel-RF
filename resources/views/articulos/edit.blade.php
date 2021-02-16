@@ -10,7 +10,7 @@
             <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg custom-editor">
 
                 <form action="{{route('articulos.update' , $articulo)}}" method="post" enctype="multipart/form-data"
-                    class="w-full border border-grey p-2">
+                    class="w-full border border-grey p-2 formulario-actualizar">
                     @csrf
                     @method('put')
                     <div class="w-full flex flex-col lg:flex-row">
@@ -119,6 +119,10 @@
     </div>
     <script type='text/javascript' src="{{ URL::asset('js/ckeditor.js') }}"></script>
     <script type='text/javascript' src="{{ URL::asset('js/editorConfig.js') }}"></script>
+    <script src="{{ URL::asset('js/sweetalert2.all.min.js') }}"></script>
+    <!-- Optional: include a polyfill for ES6 Promises for IE11 -->
+    <script src="//cdn.jsdelivr.net/npm/promise-polyfill@8/dist/polyfill.js"></script>
+
     <script>
         var fileInput = document.getElementById('doc');
         var fileListDisplay = document.getElementById('file-list-display');
@@ -198,5 +202,25 @@
 
         
         
+    </script>
+
+    <script>
+        $('.formulario-actualizar').submit(function(e){
+            e.preventDefault();
+
+            Swal.fire({
+                title: 'Quieres guardar los cambios?',
+                icon: 'question',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Si',
+                cancelButtonText: 'No'
+                }).then((result) => {
+                if (result.isConfirmed) {
+                    this.submit();
+                }
+            })
+        });
     </script>
 </x-app-layout>

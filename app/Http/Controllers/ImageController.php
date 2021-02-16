@@ -58,7 +58,7 @@ class ImageController extends Controller
     {
         $image->update($request->all());
 
-        return redirect()->route('images.dashboard');
+        return redirect()->route('images.dashboard')->with('actualizar', 'ok');
     }
 
     
@@ -68,7 +68,7 @@ class ImageController extends Controller
 
         $image->delete();
 
-        return redirect()->route('images.dashboard');
+        return redirect()->route('images.dashboard')->with('eliminar', 'ok');
 
     }
 }

@@ -85,7 +85,7 @@ class ArticuloController extends Controller
 
     public function update(Request $request, Articulo $articulo)
     {
-       
+
 
         if ($request->imgURL == null) {
             $temp = Articulo::find($articulo)->first();
@@ -121,7 +121,7 @@ class ArticuloController extends Controller
             }
         }
 
-        
+
         if ($request->listdocs[0] != null) {
             $temp = $request->listdocs[0];
             $temp2 = explode(",", $temp);
@@ -135,13 +135,13 @@ class ArticuloController extends Controller
 
 
 
-        return redirect()->route('articulos.dashboard');
+        return redirect()->route('articulos.dashboard')->with('actualizar', 'ok');
     }
     public function destroy(Articulo $articulo)
     {
         Storage::delete('Portada/' . $articulo->imgURL);
         $articulo->delete();
 
-        return redirect()->route('articulos.dashboard');
+        return redirect()->route('articulos.dashboard')->with('eliminar', 'ok');
     }
 }
