@@ -6,6 +6,7 @@ use App\Models\Image;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use Livewire\WithFileUploads;
+use Illuminate\Support\Facades\Auth;
 
 class ImageController extends Controller
 {
@@ -24,6 +25,9 @@ class ImageController extends Controller
 
     public function dashboard()
     {
+        if (Auth::user()->active == 0) {
+            return redirect('dashboard');
+        }
         $images = Image::orderBy('id', 'desc')->paginate(10);
 
         return view('images.dashboard', compact('images'));

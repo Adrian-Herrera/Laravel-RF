@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Podcast;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\Auth;
 
 class PodcastController extends Controller
 {
@@ -22,6 +23,9 @@ class PodcastController extends Controller
 
     public function dashboard()
     {
+        if (Auth::user()->active == 0) {
+            return redirect('dashboard');
+        }
         $podcasts = Podcast::orderBy('id', 'desc')->paginate(10);
 
         return view('podcasts.dashboard', compact('podcasts'));

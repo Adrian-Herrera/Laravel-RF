@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Video;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\Auth;
 
 class VideoController extends Controller
 {
@@ -23,6 +24,9 @@ class VideoController extends Controller
 
     public function dashboard()
     {
+        if (Auth::user()->active == 0) {
+            return redirect('dashboard');
+        }
         $videos = Video::orderBy('id', 'desc')->paginate(10);
 
         return view('videos.dashboard', compact('videos'));
@@ -73,7 +77,7 @@ class VideoController extends Controller
 
     public function destroy(Video $video)
     {
-        
+
         Storage::delete('public/' . $video->video_path);
 
         $video->delete();

@@ -8,6 +8,8 @@
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg p-2">
+                @if ( Auth::user()->active == 1 )
+
                 <p class="font-bold text-center text-xl border-b-2 text-gray-700">N° de publicaciones</p>
                 <!-- Cards -->
                 <div class="flex flex-wrap">
@@ -152,7 +154,8 @@
                                 <div class="bg-gray-800 p-2">
                                     <p class="font-bold bg-gray-800 text-white">Vistas las ultimas 24 horas</p>
                                 </div>
-                                <p class="font-semibold bg-white p-2">{{visits('App\Models\Articulo')->period('day')->count()}} Vistas</p>
+                                <p class="font-semibold bg-white p-2">
+                                    {{visits('App\Models\Articulo')->period('day')->count()}} Vistas</p>
                             </div>
                         </div>
                         <div class=" text-left w-full lg:w-6/12 xl:w-3/12 ">
@@ -160,7 +163,8 @@
                                 <div class="bg-gray-800 p-2">
                                     <p class="font-bold bg-gray-800 text-white">Vistas la ultima semana</p>
                                 </div>
-                                <p class="font-semibold bg-white p-2">{{visits('App\Models\Articulo')->period('week')->count()}} Vistas</p>
+                                <p class="font-semibold bg-white p-2">
+                                    {{visits('App\Models\Articulo')->period('week')->count()}} Vistas</p>
                             </div>
                         </div>
                         <div class=" text-left w-full lg:w-6/12 xl:w-3/12 ">
@@ -168,7 +172,8 @@
                                 <div class="bg-gray-800 p-2">
                                     <p class="font-bold bg-gray-800 text-white">Vistas el ultimo mes</p>
                                 </div>
-                                <p class="font-semibold bg-white p-2">{{visits('App\Models\Articulo')->period('month')->count()}} Vistas</p>
+                                <p class="font-semibold bg-white p-2">
+                                    {{visits('App\Models\Articulo')->period('month')->count()}} Vistas</p>
                             </div>
                         </div>
                         <div class=" text-left w-full lg:w-6/12 xl:w-3/12 ">
@@ -176,16 +181,22 @@
                                 <div class="bg-gray-800 p-2">
                                     <p class="font-bold bg-gray-800 text-white">Vistas el ultimo año</p>
                                 </div>
-                                <p class="font-semibold bg-white p-2">{{visits('App\Models\Articulo')->period('year')->count()}} Vistas</p>
+                                <p class="font-semibold bg-white p-2">
+                                    {{visits('App\Models\Articulo')->period('year')->count()}} Vistas</p>
                             </div>
                         </div>
-                        
+
 
                     </div>
                     {{-- <canvas id="myChart" width="400" height="200"></canvas> --}}
                 </div>
+                @else
+                <div class="p-3">
+                    <p class="text-lg">Su cuenta se encuentra deshabilitada</p>
+                </div>
+                @endif
             </div>
         </div>
     </div>
-    
+
 </x-app-layout>

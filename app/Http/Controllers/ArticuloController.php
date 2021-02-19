@@ -7,6 +7,7 @@ use App\Models\Document;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
+use Illuminate\Support\Facades\Auth;
 
 class ArticuloController extends Controller
 {
@@ -35,6 +36,9 @@ class ArticuloController extends Controller
 
     public function dashboard()
     {
+        if (Auth::user()->active == 0) {
+            return redirect('dashboard');
+        }
         $articulos = Articulo::orderBy('id', 'desc')->paginate(10);
 
         return view('articulos.dashboard', compact('articulos'));

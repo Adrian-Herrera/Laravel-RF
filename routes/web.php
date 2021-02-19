@@ -8,6 +8,7 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\DocumentController;
 use App\Http\Controllers\filepondController;
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\RouteController;
 
@@ -51,6 +52,8 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard/podcasts', [Pod
 Route::resource('podcasts', PodcastController::class);
 
 Route::resource('documents', DocumentController::class);
+
+Route::middleware(['auth:sanctum', 'verified', 'can:users.index'])->resource('users', UserController::class)->only(['index', 'edit', 'update']);
 
 
 Route::get('/nosotros', [ProfileController::class, 'index'])->name('nosotros.index');

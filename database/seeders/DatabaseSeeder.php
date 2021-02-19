@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\Storage;
 
 class DatabaseSeeder extends Seeder
 {
@@ -13,9 +14,23 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        // \App\Models\User::factory(10)->create();
-        \App\Models\Articulo::factory(20)->create();
-        // \App\Models\Image::factory(20)->create();
+        Storage::deleteDirectory('Documents');
+        Storage::deleteDirectory('Infografias');
+        Storage::deleteDirectory('Podcasts');
+        Storage::deleteDirectory('Portada');
+        Storage::deleteDirectory('profile-photos');
+        Storage::deleteDirectory('Videos');
 
+        Storage::deleteDirectory('public/Documents');
+        Storage::deleteDirectory('public/Infografias');
+        Storage::deleteDirectory('public/Podcasts');
+        Storage::deleteDirectory('public/Portada');
+        Storage::deleteDirectory('public/profile-photos');
+        Storage::deleteDirectory('public/Videos');
+
+        Storage::makeDirectory('profile-photos');
+
+        $this->call(RoleSeeder::class);
+        $this->call(UserSeeder::class);
     }
 }
