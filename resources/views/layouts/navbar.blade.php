@@ -27,7 +27,8 @@
                 <div class="flex-shrink-0 flex items-center">
 
                     <a href={{ url('/') }}>
-                        <img class="block h-14 w-auto" src="images/LogoNavBar.png" alt="RiesgoFinancieroLogo">
+                        <img class="block h-14 w-auto" src="{{ URL::asset('images/LogoNavBar.png') }}"
+                            alt="RiesgoFinancieroLogo">
                     </a>
                 </div>
                 <div class="hidden lg:flex lg:ml-6 py-3 justify-between w-full">

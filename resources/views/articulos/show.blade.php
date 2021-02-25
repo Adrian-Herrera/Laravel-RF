@@ -1,5 +1,9 @@
 @extends('layouts.plantilla')
 
+@section('headerScript')
+<script async charset="utf-8" src="//cdn.embedly.com/widgets/platform.js"></script>
+@endsection
+
 @section('content')
 
 <div class=" max-w-6xl mx-auto">
@@ -13,7 +17,7 @@
     <div class="w-full mt-8 flex flex-col lg:flex-row">
 
 
-        <article class="w-full xl:w-9/12 xl:border-r-2 xl:border-l-2 xl:px-3 mx-auto">
+        <article class="w-full px-2 xl:w-9/12 xl:border-r-2 xl:border-l-2 xl:px-3 mx-auto">
             <header class="flex flex-col">
 
                 <h1 class="uppercase text-lg font-bold my-3 tracking-wide md:font-extrabold md:text-xl">
@@ -30,7 +34,7 @@
                 <p class="">Escrito por: Fulano</p>
             </div> --}}
             </header>
-            <div class="ck-content my-3">
+            <div class="ck-content my-3" id="editor">
 
                 {!!$articulo->text!!}
 
@@ -62,7 +66,7 @@
         </div>
     </div>
 </div>
-
+<script src="{{ URL::asset('js/ckeditor.js') }}"></script>
 <script>
     var doc = document.getElementById("docs");
     var docs = <?php echo $documents?>;
@@ -80,6 +84,18 @@
     }
     date1.innerText = "Escrito el: " + moment(created_at).format("D MMMM YYYY"); 
     date2.innerText = "Modificado el: " + moment(updated_at).format("D MMMM YYYY"); 
+</script>
+<script>
+    document.querySelectorAll( 'oembed[url]' ).forEach( element => {
+        // Create the <a href="..." class="embedly-card"></a> element that Embedly uses
+        // to discover the media.
+        const anchor = document.createElement( 'a' );
+
+        anchor.setAttribute( 'href', element.getAttribute( 'url' ) );
+        anchor.className = 'embedly-card';
+
+        element.appendChild( anchor );
+    } );
 </script>
 
 @endsection

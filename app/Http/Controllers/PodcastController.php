@@ -77,9 +77,9 @@ class PodcastController extends Controller
     public function destroy(Podcast $podcast)
     {
         
-        // Storage::delete('public/' . $podcast->podcast_path);
+        Storage::delete('public/' . $podcast->podcast_path);
 
-        // $podcast->delete();
+        $podcast->delete();
 
         return redirect()->route('podcasts.dashboard')->with('eliminar', 'ok');
     }
